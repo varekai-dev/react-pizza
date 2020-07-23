@@ -1,48 +1,63 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-class Categories extends React.Component {
-  state = {
-    active: 0,
+// class Categories extends React.Component {
+//   state = {
+//     active: 0,
+//   };
+//   onSelectItem = (index) => {
+//     this.setState({
+//       active: index,
+//     });
+//   };
+
+//   render() {
+//     const { items, onClick } = this.props;
+
+//     return (
+//       <div className="categories">
+//         <ul>
+//           {items.map((name, index) => (
+//             <li
+//               className={this.state.active === index ? 'active' : ''}
+//               onClick={() => this.onSelectItem(index)}
+//               key={`${name}_${index}`}
+//             >
+//               {name}
+//             </li>
+//           ))}
+//         </ul>
+//       </div>
+//     );
+//   }
+// }
+
+// export default Categories;
+
+export default function Categories({ items }) {
+  const [activeItem, setActiveItem] = useState(null);
+  const onSelectItem = (index) => {
+    setActiveItem(index);
   };
-  onSelectItem = (index) => {
-    this.setState({
-      active: index,
-    });
-  };
-
-  render() {
-    const { items, onClick } = this.props;
-
-    return (
-      <div className="categories">
-        <ul>
-          {items.map((name, index) => (
+  return (
+    <div className="categories">
+      <ul>
+        <li
+          className={activeItem === null ? 'active' : ''}
+          onClick={() => onSelectItem(null)}
+        >
+          Все
+        </li>
+        {items &&
+          items.map((item, index) => (
             <li
-              className={this.state.active === index ? 'active' : ''}
-              onClick={() => this.onSelectItem(index)}
-              key={`${name}_${index}`}
+              onClick={() => onSelectItem(index)}
+              className={activeItem === index ? 'active' : ''}
+              key={`${item}_${index}`}
             >
-              {name}
+              {item}
             </li>
           ))}
-        </ul>
-      </div>
-    );
-  }
+      </ul>
+    </div>
+  );
 }
-
-export default Categories;
-
-// export default function Categories({ items, onClick }) {
-//   return (
-//     <div className="categories">
-//       <ul>
-//         <li className="active">Все</li>
-//         {items.map((name, index) => (
-//           <li onClick={() => onClick(name)} key={`${name}_${index}`}>
-//             {name}
-//           </li>
-//         ))}
-//       </ul>
-//     </div>
-//   );
