@@ -5,8 +5,15 @@
   &__label {
     display: flex;
     align-items: center;
+    &.rotate {
+      svg {
+        transform: rotate(00deg);
+      }
+    }
 
     svg {
+      transform: rotate(180deg);
+      transition: all 0.3s;
       margin-right: 8px;
     }
 
