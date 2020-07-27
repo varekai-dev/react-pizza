@@ -4,7 +4,6 @@ export default function SortPopup({ items }) {
   const [visiblePopup, setVisiblePopup] = useState(false)
   const [activeItem, setActiveItem] = useState(0)
   const activeLabel = items[activeItem]
-  console.log(visiblePopup)
   const sortRef = useRef()
   const toogleVisiblePopup = () => {
     setVisiblePopup(!visiblePopup)
