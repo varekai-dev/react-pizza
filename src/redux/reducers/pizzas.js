@@ -13,4 +13,4 @@ const pizzas = (state = initialState, action) => {
   return state
 }
 
-export default filters
+export default pizzas

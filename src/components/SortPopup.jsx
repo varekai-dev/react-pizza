@@ -40,7 +40,7 @@ export default function SortPopup({ items }) {
             <li>алфавиту</li> */}
             {items &&
               items.map((obj, index) => (
-                <li onClick={() => onSelectItem(index)} className={activeItem === index ? 'active' : ''} key={`${type}_${index}`}>
+                <li onClick={() => onSelectItem(index)} className={activeItem === index ? 'active' : ''} key={`${obj}_${index}`}>
                   {obj.name}
                 </li>
               ))}
