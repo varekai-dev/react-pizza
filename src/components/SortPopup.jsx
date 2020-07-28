@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from 'react'
 export default function SortPopup({ items }) {
   const [visiblePopup, setVisiblePopup] = useState(false)
   const [activeItem, setActiveItem] = useState(0)
-  const activeLabel = items[activeItem]
+  const activeLabel = items[activeItem].name
   const sortRef = useRef()
   const toogleVisiblePopup = () => {
     setVisiblePopup(!visiblePopup)
@@ -39,9 +39,9 @@ export default function SortPopup({ items }) {
             <li>цене</li>
             <li>алфавиту</li> */}
             {items &&
-              items.map((item, index) => (
-                <li onClick={() => onSelectItem(index)} className={activeItem === index ? 'active' : ''} key={`${item}_${index}`}>
-                  {item}
+              items.map((obj, index) => (
+                <li onClick={() => onSelectItem(index)} className={activeItem === index ? 'active' : ''} key={`${type}_${index}`}>
+                  {obj.name}
                 </li>
               ))}
           </ul>
