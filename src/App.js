@@ -21,6 +21,8 @@ function App() {
         <Route exact path="/" render={() => <Home items={pizzas} />} />
         <Route exact path="/cart" component={Cart} />
       </div>
+
+      
     </div>
   )
 }
