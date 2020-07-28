@@ -1,4 +1,4 @@
-@import 'variables';
+@import "variables";
 
 .categories {
   ul {
@@ -27,5 +27,27 @@
         color: #fff;
       }
     }
+  }
+}
+
+@media (max-width: 840px) {
+  .content__top {
+    flex-wrap: wrap;
+  }
+  .categories {
+    min-width: 100%;
+    ul {
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  .sort {
+    margin-top: 10px;
+    display: flex;
+    min-width: 100%;
+    justify-content: center;
+  }
+  .content__title {
+    text-align: center;
   }
 }
