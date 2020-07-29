@@ -1,4 +1,4 @@
-@import "variables";
+@import 'variables';
 
 .header {
   border-bottom: 1px solid $gray-line;
@@ -32,6 +32,9 @@
 }
 
 @media (max-width: 650px) {
+  .header {
+    padding: 40px 0 0 0;
+  }
   .header .container {
     flex-wrap: wrap;
   }
