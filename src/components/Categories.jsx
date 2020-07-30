@@ -33,24 +33,29 @@ import React, { useState } from 'react'
 
 // export default Categories;
 
-export default function Categories({ items, onClickItem }) {
-  const [activeItem, setActiveItem] = useState(null)
-  const onSelectItem = (index) => {
-    setActiveItem(index)
+const Categories = React.memo(
+  function Categories({ items, onClickItem }) {
+    const [activeItem, setActiveItem] = useState(null)
+    const onSelectItem = (index) => {
+      setActiveItem(index)
+      onClickItem(index)
+    }
+    return (
+      <div className="categories">
+        <ul>
+          <li className={activeItem === null ? 'active' : ''} onClick={() => onSelectItem(null)}>
+            Все
+          </li>
+          {items &&
+            items.map((item, index) => (
+              <li onClick={() => onSelectItem(index)} className={activeItem === index ? 'active' : ''} key={`${item}_${index}`}>
+                {item}
+              </li>
+            ))}
+        </ul>
+      </div>
+    )
   }
-  return (
-    <div className="categories">
-      <ul>
-        <li className={activeItem === null ? 'active' : ''} onClick={() => onSelectItem(null)}>
-          Все
-        </li>
-        {items &&
-          items.map((item, index) => (
-            <li onClick={() => onSelectItem(index)} className={activeItem === index ? 'active' : ''} key={`${item}_${index}`}>
-              {item}
-            </li>
-          ))}
-      </ul>
-    </div>
-  )
-}
+)
+
+export default Categories
