@@ -14,6 +14,7 @@ const sortItems = [
 export default function Home() {
   const dispatch = useDispatch()
   const items = useSelector(({ pizzas }) => pizzas.items)
+  const cartItems = useSelector(({ cart }) => cart.items)
   const isLoaded = useSelector(({ pizzas }) => pizzas.isLoaded)
   const { category, sortBy } = useSelector(({ filters }) => filters)
   const handleAddPizzaToCart = (obj) => {
@@ -41,7 +42,7 @@ export default function Home() {
       <h2 className="content__title">Все пиццы</h2>
       <div className="content__items">
         {isLoaded
-          ? items.map((obj) => <PizzaBlock onClickAddPizza={handleAddPizzaToCart} key={obj.id} {...obj} />)
+          ? items.map((obj) => <PizzaBlock addedCount={cartItems[obj.id] && cartItems[obj.id].length} onClickAddPizza={handleAddPizzaToCart} key={obj.id} {...obj} />)
           : Array(12)
               .fill(0)
               .map((_, index) => <LoadingBlock key={index} />)}
