@@ -1,8 +1,8 @@
-@import "fonts";
-@import "variables";
-@import "libs/normalize";
+@import 'fonts';
+@import 'variables';
+@import 'libs/normalize';
 
-@import "components/all";
+@import 'components/all';
 
 body {
   background-color: $background;
@@ -292,7 +292,8 @@ body {
       color: #777777;
     }
 
-    icon {
+    i {
+      font-style: normal;
       position: relative;
       top: 2px;
     }
