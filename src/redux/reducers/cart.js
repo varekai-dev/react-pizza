@@ -1,5 +1,3 @@
-const constants = {}
-
 const initialState = {
   items: {},
   totalPrice: 0,
@@ -34,6 +32,20 @@ const cart = (state = initialState, action) => {
         totalPrice: 0,
         itemsCount: 0,
         items: {}
+      }
+    }
+    case 'REMOVE_CART_ITEM': {
+      const newItems = {
+        ...state.items
+      }
+      const currentTotalPrice = newItems[action.payload].totalPrice
+      const currentTotalCount = newItems[action.payload].items.length
+      delete newItems[action.payload]
+      return {
+        ...state,
+        items: newItems,
+        totalPrice: state.totalPrice - currentTotalPrice,
+        itemsCount: state.totalCount - currentTotalCount
       }
     }
     default:
